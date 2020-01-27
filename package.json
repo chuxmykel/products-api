@@ -6,6 +6,7 @@
   "author": "chuxmykel <ngwobiachukwudi@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "pretest": "export NODE_ENV=test && yarn migrate:undo && yarn migrate && yarn seed",
     "test": "NODE_ENV=test mocha --require @babel/register src/tests --exit",
     "dev": "export DEBUG=dev && export NODE_ENV=development && nodemon --exec babel-node src/app.js",
     "start": "node build/app.js",
@@ -20,6 +21,7 @@
     "generate:model": "npx sequelize model:generate"
   },
   "dependencies": {
+    "@hapi/joi": "15.1.0",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
     "cors": "^2.8.5",
@@ -27,6 +29,8 @@
     "dotenv": "^8.2.0",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "faker": "^4.1.0",
     "morgan": "^1.9.1",
     "pg": "^7.17.1",
     "pg-hstore": "^2.3.3",
